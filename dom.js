@@ -26,8 +26,8 @@ let bold = document.getElementsByClassName('title');
 bold[0].style.fontWeight='bold';
 bold[0].style.color='green';
 
-let items = document.getElementsByClassName('list-group-item');
-items[2].style.background='green';
+// let items = document.getElementsByClassName('list-group-item');
+// items[2].style.background='green';
 // for(let key of items)
 // {
 //     key.style.fontWeight='bold';
@@ -38,9 +38,50 @@ for(let i=0; i<items.length; i++)
     items[i].style.fontWeight='bold';
 }
 
-let newItem = document.getElementsByTagName('li');
-console.log(newItem);
-for(let key of newItem)
+// let newItem = document.getElementsByTagName('li');
+// console.log(newItem);
+// for(let key of newItem)
+// {
+//     key.style.color='blue';
+// }
+
+// let input = document.querySelector('input')
+// input.value="hello world";
+
+// let submit = document.querySelector('input[type="submit"]');
+// submit.value='Send';
+
+// let items1 = document.querySelector('.list-group-item')
+// items1.style.color='red';
+// let lastitem = document.querySelector('.list-group-item:last-child');
+// lastitem.style.color='blue';
+// let second = document.querySelector('.list-group-item:nth-child(3)')
+// second.style.color='red';
+
+// let titles = document.querySelectorAll('.title');
+
+// console.log(titles);
+// titles[0].textContent="sadanand";
+
+
+// let even = document.querySelectorAll('li:nth-child(even)');
+// for(let key of even)
+// {
+//     key.style.background='grey';
+// }
+
+let second = document.querySelector('li:nth-child(2)');
+second.style.background='green';
+
+let third = document.querySelector('li:nth-child(3)');
+third.style.visibility='hidden';
+
+let liitems = document.querySelectorAll('li');
+console.log(liitems);
+liitems[1].style.color='green';
+let odd = document.querySelectorAll('li:nth-child(odd)');
+for(let key of odd)
 {
-    key.style.color='blue';
+    key.style.background='green';
 }
+

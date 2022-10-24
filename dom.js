@@ -37,3 +37,10 @@ for(let i=0; i<items.length; i++)
 {
     items[i].style.fontWeight='bold';
 }
+
+let newItem = document.getElementsByTagName('li');
+console.log(newItem);
+for(let key of newItem)
+{
+    key.style.color='blue';
+}

@@ -25,3 +25,15 @@ headerBorder.style.border='solid black 3px';
 let bold = document.getElementsByClassName('title');
 bold[0].style.fontWeight='bold';
 bold[0].style.color='green';
+
+let items = document.getElementsByClassName('list-group-item');
+items[2].style.background='green';
+// for(let key of items)
+// {
+//     key.style.fontWeight='bold';
+// }
+
+for(let i=0; i<items.length; i++)
+{
+    items[i].style.fontWeight='bold';
+}

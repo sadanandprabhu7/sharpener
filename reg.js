@@ -17,8 +17,13 @@ function onSubmit(e)
     {
         let nameV = user_name.value;
         let emailV = user_email.value;
-        localStorage.setItem('name',nameV)
-        localStorage.setItem('email',emailV)
+        const obj ={
+            name:nameV,
+            email:emailV
+        }
+        let myobj = JSON.stringify(obj);
+        localStorage.setItem('obj',myobj)
+       
        user_name.value="";
        user_email.value="";
     }

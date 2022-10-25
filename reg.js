@@ -9,9 +9,12 @@ function onSubmit(e)
 {
     e.preventDefault();
     //console.log(1);
+    
+    
     if(user_name.value==="" || user_email.value==="")
     {
         message.textContent="plz fill";
+        
     }
     else
     {
@@ -21,11 +24,29 @@ function onSubmit(e)
             name:nameV,
             email:emailV
         }
-        let myobj = JSON.stringify(obj);
-        localStorage.setItem('obj',myobj)
+       console.log(Object.keys(obj));
+        localStorage.setItem(obj.email,JSON.stringify(obj))
        
        user_name.value="";
        user_email.value="";
     }
 
 }
+
+Object.keys(localStorage).forEach((k) => {
+
+
+
+    stringifiedDetailsOfPeople = localStorage.getItem(k);
+    
+    detailsOfPeople = JSON.parse(stringifiedDetailsOfPeople);
+    
+    
+    
+    let items = document.querySelector('#users');
+   let li = document.createElement('li');
+   li.className='items';
+   li.appendChild(document.createTextNode(JSON.stringify(detailsOfPeople)));
+   items.appendChild(li);
+    
+    });

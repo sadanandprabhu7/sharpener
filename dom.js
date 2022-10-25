@@ -19,12 +19,12 @@
 // header.textContent='hi';
 // header.innerHTML='bye';
 //console.log(document.title);
-let headerBorder = document.getElementById('header-title');
-headerBorder.style.border='solid black 3px';
+// let headerBorder = document.getElementById('header-title');
+// headerBorder.style.border='solid black 3px';
 
-let bold = document.getElementsByClassName('title');
-bold[0].style.fontWeight='bold';
-bold[0].style.color='green';
+// let bold = document.getElementsByClassName('title');
+// bold[0].style.fontWeight='bold';
+// bold[0].style.color='green';
 
 // let items = document.getElementsByClassName('list-group-item');
 // items[2].style.background='green';
@@ -33,10 +33,10 @@ bold[0].style.color='green';
 //     key.style.fontWeight='bold';
 // }
 
-for(let i=0; i<items.length; i++)
-{
-    items[i].style.fontWeight='bold';
-}
+// for(let i=0; i<items.length; i++)
+// {
+//     items[i].style.fontWeight='bold';
+// }
 
 // let newItem = document.getElementsByTagName('li');
 // console.log(newItem);
@@ -70,18 +70,76 @@ for(let i=0; i<items.length; i++)
 //     key.style.background='grey';
 // }
 
-let second = document.querySelector('li:nth-child(2)');
-second.style.background='green';
+// let second = document.querySelector('li:nth-child(2)');
+// second.style.background='green';
 
-let third = document.querySelector('li:nth-child(3)');
-third.style.visibility='hidden';
+// let third = document.querySelector('li:nth-child(3)');
+// third.style.visibility='hidden';
 
-let liitems = document.querySelectorAll('li');
-console.log(liitems);
-liitems[1].style.color='green';
-let odd = document.querySelectorAll('li:nth-child(odd)');
-for(let key of odd)
-{
-    key.style.background='green';
-}
+// let liitems = document.querySelectorAll('li');
+// console.log(liitems);
+// liitems[1].style.color='green';
+// let odd = document.querySelectorAll('li:nth-child(odd)');
+// for(let key of odd)
+// {
+//     key.style.background='green';
+// }
+
+// parentNode and parentElement is same//
+let items = document.querySelector('#items');
+// console.log(items.parentNode.parentNode.parentNode.parentNode);
+// items.parentNode.style.background='grey';
+// items.parentElement.parentElement.style.background='yellow';
+
+//child node 
+//is list of items which is node but it also conatin
+// line break of space in items list array so not much useable
+// instead of we can use children
+//children 
+//is not node it is html collection
+// it avoid text and white spaces
+// shows only children
+// we can access each element using index
+
+//console.log(items.childNodes);
+console.log(items.children);
+items.children[1].style.background='blue';
+
+//firstChild also represent text so useless
+console.log(items.firstChild);
+
+// instead of firstElementChild 
+//can be use to access first element of items
+console.log(items.firstElementChild.style.color='red');
+
+// same thing with lastChild and lastElementChild
+
+// console.log(items.nextSibling);
+// console.log(items.nextElementSibling)
+// console.log(items.previousSibling);
+// console.log(items.previousElementSibling.textContent='hello');
+
+var div = document.createElement('div');
+
+div.className="hello";
+div.id='hello2';
+
+div.setAttribute('title','new div');
+
+ let divtext = document.createTextNode('hello world');
+ div.appendChild(divtext);
+ console.log(div);
+
+//  let container = document.querySelector('header .container')
+//  let h1 = document.querySelector('header h1');
+
+//  container.insertBefore(div,h1);
+
+ let item = document.getElementById('items')
+ 
+item.innerHTML ='<li>hello world</li>'+item.innerHTML;
+
+ 
+
+
 

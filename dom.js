@@ -86,7 +86,7 @@
 // }
 
 // parentNode and parentElement is same//
-let items = document.querySelector('#items');
+// let items = document.querySelector('#items');
 // console.log(items.parentNode.parentNode.parentNode.parentNode);
 // items.parentNode.style.background='grey';
 // items.parentElement.parentElement.style.background='yellow';
@@ -102,15 +102,15 @@ let items = document.querySelector('#items');
 // we can access each element using index
 
 //console.log(items.childNodes);
-console.log(items.children);
-items.children[1].style.background='blue';
+// console.log(items.children);
+// items.children[1].style.background='blue';
 
 //firstChild also represent text so useless
-console.log(items.firstChild);
+// console.log(items.firstChild);
 
 // instead of firstElementChild 
 //can be use to access first element of items
-console.log(items.firstElementChild.style.color='red');
+// console.log(items.firstElementChild.style.color='red');
 
 // same thing with lastChild and lastElementChild
 
@@ -119,27 +119,85 @@ console.log(items.firstElementChild.style.color='red');
 // console.log(items.previousSibling);
 // console.log(items.previousElementSibling.textContent='hello');
 
-var div = document.createElement('div');
+// var div = document.createElement('div');
 
-div.className="hello";
-div.id='hello2';
+// div.className="hello";
+// div.id='hello2';
 
-div.setAttribute('title','new div');
+// div.setAttribute('title','new div');
 
- let divtext = document.createTextNode('hello world');
- div.appendChild(divtext);
- console.log(div);
+//  let divtext = document.createTextNode('hello world');
+//  div.appendChild(divtext);
+//  console.log(div);
 
 //  let container = document.querySelector('header .container')
 //  let h1 = document.querySelector('header h1');
 
 //  container.insertBefore(div,h1);
 
- let item = document.getElementById('items')
+//  let item = document.getElementById('items')
  
-item.innerHTML ='<li>hello world</li>'+item.innerHTML;
+// item.innerHTML ='<li>hello world</li>'+item.innerHTML;
 
- 
+ let form = document.getElementById('addForm')
+ let itemList = document.getElementById('items')
+ //console.log(itemList);
+
+ form.addEventListener('submit', addItem);
+
+ function addItem(e)
+ {
+    e.preventDefault();
+    //console.log(1);
+
+    // get input value
+    let newItem = document.getElementById('item').value;
+
+    //create new li
+    let li = document.createElement('li');
+
+    //add li to its class
+    li.className='list-group-item';
+    //add node to input value
+    li.appendChild(document.createTextNode(newItem));
+    //adding new li to itemList
+    itemList.appendChild(li);
+    //console.log(li);
+    // adding delte button
+    let deleteBtn = document.createElement('button');
+    ///adding delete button to its class
+    deleteBtn.className='btn btn-danger btn-sm float-right delete';
+    /// adding text to delete button 
+    deleteBtn.appendChild(document.createTextNode('x'));
+    ///apending delete button to every li
+    li.appendChild(deleteBtn);
+
+    // adding edit button
+    let editBtn = document.createElement('button');
+    //adding edit button to its class
+    editBtn.className='btn btn-danger btn-sm float-right delete';
+    //adding text to edit button
+    editBtn.appendChild(document.createTextNode('Edit'));
+    ///appending edit button to li
+    li.appendChild(editBtn);
+
+    
+ }
+
+ itemList.addEventListener('click', removeItem);
+
+ function removeItem(e)
+ {
+    if(e.target.classList.contains('delete'))
+    {
+        if(confirm('Are You Sure?'))
+        {
+            let li = e.target.parentElement;
+            itemList.removeChild(li);
+        }
+    }
+ }
+
 
 
 

@@ -152,6 +152,8 @@
 
     // get input value
     let newItem = document.getElementById('item').value;
+    // adding description for items
+    let des = document.getElementById('des').value;
 
     //create new li
     let li = document.createElement('li');
@@ -160,6 +162,8 @@
     li.className='list-group-item';
     //add node to input value
     li.appendChild(document.createTextNode(newItem));
+    //adding descriptin to li
+    li.appendChild(document.createTextNode(' '+des));
     //adding new li to itemList
     itemList.appendChild(li);
     //console.log(li);
@@ -198,6 +202,28 @@
     }
  }
 
+ let filter = document.getElementById('filter')
+
+ filter.addEventListener('keyup',filterItems);
+
+ function filterItems(e)
+ {
+    let text=e.target.value.toLowerCase();
+    let items =itemList.getElementsByTagName('li');
+    Array.from(items).forEach(function(item)
+    {
+        let itemName=item.firstChild.textContent;
+        let role = item.childNodes[1].textContent;
+        if(itemName.toLowerCase().indexOf(text) !=-1 || role.toLowerCase().indexOf(text) !=-1)
+        {
+            item.style.display='Block';  
+        }
+        else
+        {
+            item.style.display='none';
+        }
+    });
+ }
 
 
 

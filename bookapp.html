@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<header>
+    <title></title>
+</header>
+<body>
+    <form onsubmit="saveform(event)">
+        <label>Name:</label>
+        <input type="text" id="name" name="username" required/>
+        <label>Email:</label>
+        <input type="text" id="email" name="email" required/>
+        <label>Phone:</label>
+        <input type="tel" id="phone" name="phone" required/>
+        <button>Submit</button>
+    </form>
+    <ul id='listOfUsers'></ul>
+    <script>
+        function saveform(event)
+        {
+            event.preventDefault();
+            const name=event.target.username.value;
+            const email=event.target.email.value;
+            const phone=event.target.phone.value;
+            if(localStorage.getItem(email) !==null)
+            {
+                alert('please enter unique email');
+               
+            }
+            const obj ={
+                name,
+                email,
+                phone
+            }
+            const saveDetails = JSON.stringify(obj);
+            localStorage.setItem(obj.email,saveDetails);
+            
+        }
+        window.addEventListener("DOMContentLoaded", () => {
+            const details= Object.keys(localStorage)
+            
+           for(let i=0; i<details.length; i++)
+           {
+                const key=details[i];
+                const userDetails = localStorage[key];
+                const user = JSON.parse(userDetails);
+                showFinal(user);
+           }
+        }) 
+           
+                
+        
+
+        function showFinal(user)
+        {
+            document.getElementById('email').value='';
+            document.getElementById('name').value='';
+            document.getElementById('phone').value='';
+            
+           
+
+            const parentnode = document.getElementById('listOfUsers');
+            const li = `<li id=${user.email}> ${user.name} - ${user.email}
+                <button onclick=deleteUser('${user.email}')>Delete</button><button onclick=edit('${user.email}','${user.name}','${user.phone}')>Edit</button>
+                </li>`
+            parentnode.innerHTML=parentnode.innerHTML+li;
+        }
+
+        function edit(emailId,name,phone)
+        {
+            document.getElementById('email').value=emailId;
+            document.getElementById('name').value=name;
+            document.getElementById('phone').value=phone;
+            //deleteUser(emailId)
+            
+        }
+        function deleteUser(e)
+        {
+            localStorage.removeItem(e);
+            removeFromScreen(e);
+        }
+
+        function removeFromScreen(e)
+        {
+            let parentnode = document.getElementById('listOfUsers');
+            let userDelte = document.getElementById(e);
+            if(userDelte)
+            {
+                parentnode.remove(userDelte);
+            }
+        }
+    </script>
+</body>
+</html>

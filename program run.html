@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<script>
+let add =function(a,b)
+{
+  console.log(a*b);
+}
+let curry = add.bind(this,2,3);
+curry(2);
+
+let curry2 = add.bind(this,4)
+curry2(4)
+
+let closer =function(b)
+{
+  function c(a)
+  {
+    console.log(a*b);
+  }
+  return c;
+}
+
+let curry3 = closer(2);
+curry3(10);
+</script>
+    </html>
+    
+    

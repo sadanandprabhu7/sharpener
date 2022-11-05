@@ -13,6 +13,7 @@
         <button>Submit</button>
     </form>
     <ul id='listOfUsers'></ul>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"></script>
     <script>
         function saveform(event)
         {
@@ -31,7 +32,13 @@
                 phone
             }
             const saveDetails = JSON.stringify(obj);
-            localStorage.setItem(obj.email,saveDetails);
+            axios.post("https://crudcrud.com/api/3e3d2c94f7824adeb2cf92822703cb/appointData",obj)
+            .then((res)=>{
+                showFinal(res.data)
+            })
+            .catch((err)=>{
+                document.body.innerHTML=document.body.innerHTML+'<h4>Something went wrong</h4>'
+            })
             
         }
         window.addEventListener("DOMContentLoaded", () => {
@@ -42,7 +49,7 @@
                 const key=details[i];
                 const userDetails = localStorage[key];
                 const user = JSON.parse(userDetails);
-                showFinal(user);
+                //showFinal(user);
            }
         }) 
            

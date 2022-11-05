@@ -32,25 +32,37 @@
                 phone
             }
             const saveDetails = JSON.stringify(obj);
-            axios.post("https://crudcrud.com/api/3e3d2c94f7824adeb2cf92822703cb/appointData",obj)
+            axios.post("https://crudcrud.com/api/3e3d2c94f7824adeb2cf92822703cadb/appointData",obj)
             .then((res)=>{
                 showFinal(res.data)
             })
             .catch((err)=>{
-                document.body.innerHTML=document.body.innerHTML+'<h4>Something went wrong</h4>'
+                document.body.innerHTML=document.body.innerHTML+'<h4>Somthing went wrong</h4>'
             })
             
         }
         window.addEventListener("DOMContentLoaded", () => {
-            const details= Object.keys(localStorage)
+
+            axios
+            .get("https://crudcrud.com/api/3e3d2c94f7824adeb2cf92822703cadb/appointData")
+            .then((res)=>{
+                for(let i=0; i<res.data.length; i++)
+                {
+                    showFinal(res.data[i]);
+                }
+            })
+            .catch((err)=>{
+                document.body.innerHTML=document.body.innerHTML+'<h4>Somthing went wrong</h4>'
+            })
+        //     const details= Object.keys(localStorage)
             
-           for(let i=0; i<details.length; i++)
-           {
-                const key=details[i];
-                const userDetails = localStorage[key];
-                const user = JSON.parse(userDetails);
-                //showFinal(user);
-           }
+        //    for(let i=0; i<details.length; i++)
+        //    {
+        //         const key=details[i];
+        //         const userDetails = localStorage[key];
+        //         const user = JSON.parse(userDetails);
+        //         //showFinal(user);
+        //    }
         }) 
            
                 
@@ -81,8 +93,16 @@
         }
         function deleteUser(e)
         {
-            localStorage.removeItem(e);
-            removeFromScreen(e);
+            // axios
+            // .get("https://crudcrud.com/api/3e3d2c94f7824adeb2cf92822703cadb/appointData")
+            // .then((res)=>{
+            //     console.log(res.id);
+            // })
+            // .catch((err)=>{
+            //     document.body.innerHTML=document.body.innerHTML+'<h4>Somthing went wrong</h4>'
+            // })
+            // localStorage.removeItem(e);
+            // removeFromScreen(e);
         }
 
         function removeFromScreen(e)

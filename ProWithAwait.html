@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<body>
+</body>
+<script>
+const posts =[
+    {title:'Post One',body:'This is Post one',createAt:new Date().getTime()},
+    {title:'Post Two',body:'This is Post two',createAt:new Date().getTime()},
+    {title:'Post Three',body:'This is Post three',createAt:new Date().getTime()},
+  
+];
+
+let intervalId=0;
+function getPost()
+{
+    clearInterval(intervalId);
+   intervalId= setInterval(()=>
+    {
+        let output='';
+        posts.forEach((post)=>
+        {
+            output +=`<li>${post.title} Created ${(new Date().getTime() - post.createAt)/1000} Seconds ago</li>`;
+        })
+        document.body.innerHTML=output;
+    },1000)
+    
+};
+function createPost(post4)
+{
+    return new Promise((resolve,reject)=>
+    {
+    setTimeout(()=>
+    {
+        posts.push({...post4,createAt:new Date().getTime()});
+
+        const error=false;
+        if(!error)
+        {
+            resolve();
+        }
+        else
+        {
+            reject('somthing went wrong');
+        }
+       
+    },2000);
+    });
+}
+function deletePost()
+{
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            if(posts.length >0)
+            {
+                const lastelement = posts.pop()
+                resolve(lastelement);
+                
+            }
+            else{
+                    reject('array is empty');
+                }
+        },1000)
+
+    })
+}
+async function data()
+{
+const msg=await createPost({title:'Post Four',body:'This is Post four'})
+   const msg2=await getPost(msg)
+   const msg3= await deletePost(msg2)
+    const msg4=await getPost(msg3)
+    const msg5=await deletePost(msg4)
+        const msg6=await getPost(msg5)
+        const msg7=await deletePost(msg6)
+            const msg8=await getPost(msg7)
+            const msg9=await deletePost(msg8)
+                const msg10 =await getPost(msg9)
+               const msg11=await deletePost(msg10).then(()=>{})
+                .catch((err)=>{
+                    console.log('inside catch  block',err)
+                })
+            }
+            data();
+
+
+
+</script>
+    </html>
+    
+    

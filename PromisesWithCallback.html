@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+        console.log('Person 1 shows: ticket');
+        console.log('Person 2 shows: ticket');
+   // 1st promise // making promise to show ticket to ticket collector at movie theater
+        const promiseWifeBringingTicket= new Promise((resolve,reject)=>{///() call back function with two parameter resolve and reject
+            setTimeout(()=>/// have to wait till the time when wife brings the ticket which here 3000 mili sec mean 1 sec
+            {
+                resolve('ticket')/// resolve ticket problem after 3 sec
+            },3000)
+        });
+        ///when promise resole then (what have to do should define maena when promise is done) 
+        // promiseWifeBringingTicket.then((t)=>///then will have ticket (t) // using fucntion print this
+        // {
+        //     console.log(`Person 3 shows: ${t}`);
+        // })
+        const getPopCorn=promiseWifeBringingTicket.then((t)=>///then will have ticket (t) // using fucntion print this
+        {   console.log('wife: i have tickes');
+            console.log('husband: we should go in');
+            console.log('wife: i am hungry');
+            //now return new promise popcorn which u did to wife
+            return new Promise((resolve,reject)=>resolve(`${t} Popcorn`))
+        })
+   // now she brought the ticket but she is hungry then
+   // husband will make new promise to wife that he will bring popcorn for her then again they have to wait to full fill promise
+   
+   // 2nd promise bringing the popcorn
+        // we have to store promise 1 at line number 17 in to get popcorn
+        const getButter=getPopCorn.then((t)=>{
+            console.log('husband: i got some popcorn');
+            console.log('husband: we should go in');
+            console.log('wife: i need butter')
+            return new Promise((resolve,reject)=>resolve(`${t} Butter`)) 
+        });
+        // after geting butter then
+
+        const coldDrink =getButter.then((t)=>{
+            return new Promise((resolve,reject)=>resolve(`${t} cold drink`))
+        });
+        coldDrink.then((t)=>console.log(t))
+        console.log('Person 4 shows: ticket');
+        console.log('Person 5 shows: ticket');
+    </script>
+</body>
+</html>

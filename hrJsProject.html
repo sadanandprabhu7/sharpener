@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<head>
+    <title></title>
+</head>
+<body>
+    <form onsubmit="saveForm(event)">
+        <label for="expence">Choose expence</label>
+        <input type="number" id="expence" required>
+        <label for="description">Choose Description</label>
+        <input type="text" id="description" required>
+        <label for="category">Choose Category</label>
+        <select name="category" id="category" required>
+            <option value="food">Food</option>
+            <option value="movie">Movie</option>
+            <option value="shopping">Shipping</option>
+        </select>
+        <button>Add Expence</button>
+    </form>
+    <ul id="listofusers"></ul>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"></script>
+    <script>
+        function saveForm(event)
+        {
+            event.preventDefault();
+            console.log('hello world');
+
+            let expence = event.target.expence.value;
+            let description=event.target.description.value;
+            let category=event.target.category.value;
+
+            const obj={
+                expence,
+                description,
+                category
+            }
+
+            axios
+            .post("https://crudcrud.com/api/00a04d63d340471285a10bec99173194/saveData",obj)
+            .then((res)=>{
+                showDetails(res.data)
+                console.log(res);
+            })
+            .catch((err)=>
+            {
+                console.log(err);
+            })
+
+        }
+        window.addEventListener('DOMContentLoaded',()=>
+        {
+
+            axios
+            .get("https://crudcrud.com/api/00a04d63d340471285a10bec99173194/saveData")
+            .then((res)=>
+            {
+                for(let i=0; i<res.data.length; i++)
+                {
+                    showDetails(res.data[i]);
+                }
+                
+            })
+            .catch((err)=>
+            {
+                console.log(err);
+            })
+
+        })
+        function showDetails(user)
+        {
+            document.getElementById('expence').value='';
+            document.getElementById('description').value='';
+            document.getElementById('category').value='';
+            
+            let parentnode = document.getElementById('listofusers');
+            let  li=`<li =${user._id}>${user.expence} - ${user.description} - ${user.category} 
+            <button onclick=deleteUser('${user._id}')>Delete Expence</button> 
+            <button onclick=edit('${user.expence}','${user.description}','${user.category}','${user._id}')>Edit Expence</button>`
+            parentnode.innerHTML=parentnode.innerHTML+li;
+            console.log()
+        }
+        function edit(expenceU,descriptionU,categoryU,userId)
+        {
+            document.getElementById('expence').value=expenceU;
+            document.getElementById('description').value=descriptionU;
+            document.getElementById('category').value=categoryU;
+            deleteUser(userId);
+
+        }
+        function deleteUser(userId){
+            axios
+            .delete(`https://crudcrud.com/api/00a04d63d340471285a10bec99173194/saveData/${userId}`)
+            .then((res)=>{
+                console.log(userId);
+              
+
+            })
+            .catch((err)=>
+            {
+                console.log(err);
+            })
+            removeFromScreen(userId);
+            
+        }
+        function removeFromScreen(userId)
+        {
+            let parentnode=document.getElementById("listofusers")
+            let li = document.getElementById(userId)
+            if(li)
+            {
+                parentnode.removeChild(li);
+            }
+        }
+
+    </script>
+</body>
+</html>

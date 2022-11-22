@@ -18,38 +18,38 @@ expenceApp.use(cors())
 // step 5
 expenceApp.use(bodyParser.json({extended:false}))
 
-//expenceApp.use(adminRoutes)
+expenceApp.use(adminRoutes)
 
-expenceApp.post('/save',async (req,res,next)=>{
-    const expence=req.body.expence;
-    const description=req.body.description;
-    const category=req.body.category;
-   const data = await Expence.create({expence:expence,description:description,category:category})
-    res.status(201).json({newUserDetails:data})
+// expenceApp.post('/save',async (req,res,next)=>{
+//     const expence=req.body.expence;
+//     const description=req.body.description;
+//     const category=req.body.category;
+//    const data = await Expence.create({expence:expence,description:description,category:category})
+//     res.status(201).json({newUserDetails:data})
   
-})
-expenceApp.get('/',(res,req,next)=>{
-    Expence.findAll().then(data =>{
-        req.json({newUserDetails:data})
+// })
+// expenceApp.get('/',(res,req,next)=>{
+//     Expence.findAll().then(data =>{
+//         req.json({newUserDetails:data})
        
-    })
-})
-expenceApp.delete('/:id',(req,res,next)=>{
-    const prodId = req.params.id;
-    Expence.findByPk(prodId)
-    .then((user)=>{
-          return user.destroy();
+//     })
+// })
+// expenceApp.delete('/:id',(req,res,next)=>{
+//     const prodId = req.params.id;
+//     Expence.findByPk(prodId)
+//     .then((user)=>{
+//           return user.destroy();
      
-    })
-    .then(()=>{
-      console.log('product destroyed')
+//     })
+//     .then(()=>{
+//       console.log('product destroyed')
      
-    })
-    .catch((err)=>{
-      console.log(err)
-    }); 
-}
-)
+//     })
+//     .catch((err)=>{
+//       console.log(err)
+//     }); 
+// }
+// )
 
 Expence.sync().then(result=>{
     console.log(result)

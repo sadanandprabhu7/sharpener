@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <header>
     <title></title>
@@ -31,19 +32,18 @@
                 email,
                 phone
             }
-            //const saveDetails = JSON.stringify(obj);
-            axios.post("https://crudcrud.com/api/c2d4d3414e1046c2b994e0de80c02f32/appointData",obj)
+            axios.post("http://localhost:5000/save",obj)
             .then((res)=>{
-                showFinal(res.data)
+                showFinal(res.data.newUserDetails)
+                
+               
+               
             })
             .catch((err)=>{
                 document.body.innerHTML=document.body.innerHTML+'<h4>Somthing went wrong</h4>'
             })
             
         }
-    
-                
-        
 
         function showFinal(user)
         {
@@ -54,43 +54,34 @@
            
 
             const parentnode = document.getElementById('listOfUsers');
-            const li = `<li id=${user._id}> ${user.name} - ${user.email}-${user.phone}
-                <button onclick=deleteUser('${user._id}')>Delete</button><button onclick=edit('${user.email}','${user.name}','${user.phone}','${user._id}')>Edit</button>
+            const li = `<li id=${user.id}> ${user.name} - ${user.email}-${user.phone}
+                <button onclick=deleteUser('${user.id}')>Delete</button>
+                <button onclick=edit('${user.email}','${user.name}','${user.phone}','${user.id}')>Edit</button>
                 </li>`
             parentnode.innerHTML=parentnode.innerHTML+li;
         }
 
         function edit(emailId,name,phone,userID)
         {
-            // axios
-            // .delete(`https://crudcrud.com/api/c2d4d3414e1046c2b994e0de80c02f32/appointData/${userID}`)
-            // .then((res)=>{
-            //     console.log(res)
+         
                 document.getElementById('email').value=emailId;
                 document.getElementById('name').value=name;
                 document.getElementById('phone').value=phone;
-            // })
-            // .catch((err)=>{
-            //     document.body.innerHTML=document.body.innerHTML+'<h4>Somthing went wrong</h4>'
-            // })
-            // document.getElementById('email').value=emailId;
-            // document.getElementById('name').value=name;
-            // document.getElementById('phone').value=phone;
             deleteUser(userID)
             
         }
         function deleteUser(userID)
         {
             axios
-            .delete(`https://crudcrud.com/api/c2d4d3414e1046c2b994e0de80c02f32/appointData/${userID}`)
+            .delete(`http://localhost:5000/${userID}`)
             .then((res)=>{
                 console.log(res);
             })
             .catch((err)=>{
                 document.body.innerHTML=document.body.innerHTML+'<h4>Somthing went wrong</h4>'
             })
-            // localStorage.removeItem(e);
-            removeFromScreen(userID);
+     
+           removeFromScreen(userID);
         }
 
         function removeFromScreen(userID)
@@ -106,25 +97,16 @@
         window.addEventListener("DOMContentLoaded", () => {
 
         axios
-        .get("https://crudcrud.com/api/c2d4d3414e1046c2b994e0de80c02f32/appointData")
+        .get("http://localhost:5000/")
         .then((res)=>{
-            for(let i=0; i<res.data.length; i++)
+            for(let i=0; i<res.data.newUserDetails.length; i++)
             {
-                showFinal(res.data[i]);
+                showFinal(res.data.newUserDetails[i]);
             }
         })
         .catch((err)=>{
             document.body.innerHTML=document.body.innerHTML+'<h4>Somthing went wrong</h4>'
         })
-        //     const details= Object.keys(localStorage)
-
-        //    for(let i=0; i<details.length; i++)
-        //    {
-        //         const key=details[i];
-        //         const userDetails = localStorage[key];
-        //         const user = JSON.parse(userDetails);
-        //         //showFinal(user);
-        //    }
         }) 
 
     </script>

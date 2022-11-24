@@ -1,3 +1,16 @@
+const open = document.getElementById("open");
+const close = document.getElementById("close");
+const container = document.getElementById("cart");
+
+open.addEventListener("click", () => {
+    container.classList.add("active");
+});
+
+close.addEventListener("click", () => {
+    container.classList.remove("active");
+});
+
+
 // CODE START HERE-- TO REMOVE ITEMS FROM CART
 
 const addToCartItem = document.getElementsByClassName('shop-item-button')

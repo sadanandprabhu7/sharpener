@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<body>
+    <script>
+
+
+/// 1st
+
+// var a = 3;
+// function printName(name)
+// {
+// console.log(name)
+// }
+// printName("YAVTECH");
+// console.log(a) 
+
+// 2nd
+
+// printName("YAVTECH");
+// console.log(a);
+// var a = 3;
+// function printName(name)
+// {
+// console.log(name)
+// }
+
+// 3rd
+
+// console.log(printName());
+// ///answer
+// ///type error printName is not function beacuse 
+// //here it is treated as variable now it is undefined its code is not executed yet 
+// console.log(a);
+// var a = 3;
+// var printName = (name) => 
+// {
+// console.log(name)
+// }
+
+// 4th
+
+// console.log(printName);// function should always called with () 
+// console.log(a);
+// var a = 3;
+// var printName = function (name) {
+// console.log(name)
+// }
+
+// 5th
+
+// console.log(printName);
+// console.log(a)
+// //answer
+// //
+// //
+// //reference error beacuse we are printing a and a is not there in code as defined 
+// //commented var a=5
+// var printName = function (name) {
+// console.log(name)
+// }
+
+// 1st
+
+// var a = 2;
+// var c = 2;
+// function b(){
+// var x = 2;
+// var c = 4
+// console.log(c)
+// }
+
+// console.log(a);
+// console.log(this.a);
+// console.log(this.c)
+// console.log(window.x)
+// //
+// // window is global object always in global execution context so window is there but not that is why undefined
+// console.log(this.x)
+// console.log(window.a)
+// console.log(window.x)
+// console.log(b());
+
+// 2nd 
+
+// function abc() {
+// console.log(a);
+// }
+// var a = 7;
+// abc();
+
+// 3rd
+
+// function abc() {
+// console.log(a);
+// }
+// abc();
+// var a = 7;
+
+//4th
+
+// function outerfunction() 
+// {
+// console.log(a);//7 3 10
+// var c = 10;
+
+// innerfunction();
+
+// function innerfunction() 
+// {
+// console.log(b);
+// console.log(c);
+// }
+
+// }
+// var a = 7;
+// var b =3
+
+// outerfunction();
+
+// 5th
+// function outerfunction() 
+// {
+// console.log(a);//un 10 7 7
+// var a = 10;
+// innerfunction();
+// function innerfunction() {
+//     //this.a=15 then it will come under this furntcion and inside this window or this will print a else it will for global a
+// console.log(a);
+// console.log(window.a);
+// console.log(this.a)
+// }
+// }
+// var a = 7;
+// var b =3
+// outerfunction();
+
+// let and var 
+
+// 1st
+
+/// let has some diffrere scope there is intilaized and store it not in global so thats why it will be reference error and stopped execution there
+// console.log(a);
+// console.log(b);
+// let a=5;
+// var b =6;
+// console.log(b);
+
+// 2nd 
+
+// console.log(a);
+// var a = 5;
+// console.log(b) //we havent initialized b, Guess the output
+
+// 3rd rewised it again 
+
+// let a = 5;
+// var b = 6;
+// console.log(this.b);
+// console.log(window.b)
+// console.log(window.a)
+// console.log(this.a)
+
+//find error *****************************************************************************************
+// let a =5;
+// let a =6;
+
+// let a=5;
+// var a=5;
+
+//find ouput
+// var a=5;
+// var a=5;
+
+// find ouput
+// let a =6;
+// const b;
+
+
+
+// const b=5;
+// b=6; 
+
+// const b=5;
+// const b=6;
+
+
+// 1st
+
+// console.log('a');
+// console.log('b');
+// setTimeout(()=> console.log('c'), 1000);
+// console.log('d');
+
+//2nd
+// console.log('a');
+// console.log('b');
+// setTimeout(()=> console.log('c'), 1000);
+// setTimeout(()=> console.log('c'), 0);
+// console.log('d');
+
+// 1st ***************************************************************************88
+// var a = 50;
+// {
+// var a =30; 
+
+// let b = 20;
+// let c = 30;
+// }
+// console.log(a)
+
+// 2nd 
+// const a = 50;
+
+// {
+//     var a =30;
+// let b = 20;
+// let c = 30;
+// }
+// console.log(a)
+
+//3rd 
+// let a = 50;
+// {
+// var a =30;
+// let b = 20;
+// let c = 30;
+// }
+// console.log(a)
+
+//4th ******************************************* check this again
+
+// var a = 50;
+// function fun(){
+// var a =30;
+// let b = 20;
+// let c = 30;
+// }
+// fun();
+// console.log(a)
+
+//5th
+
+// let a = 50;
+// function fun(){
+// var a =30;
+// let b = 20;
+// let c = 30;
+// }
+// fun();
+// console.log(a)
+
+//6th
+// var is in global scope and const is also defined so error syntax 
+// const a = 10;
+// {
+// var a = 10;
+// }
+// console.log(a)
+
+//7th
+// const a = 10;
+// {
+// const a = 20;
+// {
+// const a = 50;
+// console.log(a);
+// }
+// console.log(a)
+// }
+// console.log(a)
+
+//8th
+// const a = 10;
+// {
+// const a = 20;
+// {
+// console.log(a);
+// }
+// console.log(a)
+// }
+// console.log(a)
+
+// closer
+
+///1st
+// function x()
+// {
+// let a = 10;
+// function y(){
+// console.log(a);
+// }
+// y()
+// }
+// x();
+
+//2nd
+// function x()
+// {
+// let a = 10;
+// function y()
+// {
+// console.log(a);
+// }
+// return y();
+// }
+
+// x();
+
+//3rd  *************************************************** see it again
+// function x()
+// {
+// let a = 10;
+// function y(){
+// console.log(a);
+// }
+// return y;
+// }
+// console.log( x());
+
+// 4th
+// function x()
+// {
+// let a = 10;
+// function y(){
+// console.log(a);
+// }
+// return y;
+// }
+// const z = x()
+// console.log(z());
+
+//5th
+
+// function x()
+// {
+// let a = 10;
+// function y()
+// {
+// console.log(a);
+// }
+// a= 50;
+// return y;
+// }
+// const z = x()
+// console.log(z());
+
+/// advanced closer
+
+//1st 
+
+// function y(){
+// setTimeout(() => console.log(a), 1000)
+// console.log('Done Coding')
+// }
+// y();
+
+// 2nd
+// function y()
+// {
+// setTimeout(() => console.log(a), 0)
+// console.log('Done Coding')
+// }
+// y();
+
+// 3rd
+// function y()
+// {
+// for(var i=1;i<6;i++)
+// {
+// setTimeout(() => console.log(i ), i * 1000)
+// }
+// console.log('Done Coding')
+// }
+// y();
+
+// 4th
+// function y(){
+// for(let i=1;i<6;i++){
+// setTimeout(() => console.log(i ), i * 1000)
+// }
+// console.log('Done Coding')
+// }
+// y();
+
+//5th
+// const name = (arr)=>{
+//     let count=0;
+//     return()=>{
+//     console.log('hello '+arr[count]);
+//     count++;
+//     }
+// }
+
+// let fun = name(["Ram","Shyam"]);
+// fun()// Print Hello Ram
+// fun()//print Hello Shyam
+
+// 1st
+
+// a()
+// b()
+// function a()
+// {
+// console.log('inside a');
+// }
+// var b = function ()
+// {
+// console.log('inside b');
+// }
+
+//1st
+// setTimeout(() => console.log('timer expired'), 1000)
+// function x(y) 
+// {
+// console.log('inside x');
+// y();
+// }
+// x(function y(){console.log('inside y')})
+
+//2nd
+
+// setTimeout(() => console.log('timer1 expired'), 1000)
+// setTimeout(() => console.log('timer2 expired'), 0)
+// function x(y) 
+// {
+// console.log('inside x');
+// y();
+// }
+
+// x(function y(){console.log('inside y')})
+
+//3rd
+// setTimeout(() => console.log('timer1 expired'), 1000)
+// setTimeout(() => console.log('timer2 expired'), 0)
+// function x(y) {
+// console.log('inside x');
+// y();
+// }
+// x(function y(){setTimeout(() => console.log('inside y'), 0)})
+
+//1st
+// console.log('a');
+// console.log('b');
+// setTimeout(() => console.log('c'), 1000)
+// console.log('d')
+
+//2nd
+// console.log('a');
+// console.log('b');
+// setTimeout(() => console.log('c'), 0)
+// console.log('d')
+
+//3rd
+// console.log('a');
+// console.log('b');
+// setTimeout(() => console.log('e'), 1000)
+// setTimeout(() => console.log('c'), 0)
+// console.log('d')
+
+// promises with async await **************************************************
+
+// function earnMoney()
+// {
+//     return new Promise((resolve,reject)=>{
+//     setTimeout(()=>
+//     {
+//         console.log('Have Money');
+//         resolve()
+//     },1000)
+//     })
+// }
+
+// function buyCar()
+// {
+//     return new Promise((resolve,reject)=>{
+//     setTimeout(()=>
+//     {
+//         console.log('Bought Car');
+//         resolve()
+//     },1000)
+//     })
+// }
+
+// function goToManali()
+// {
+//     return new Promise((resolve,reject)=>{
+//     setTimeout(()=>
+//     {
+//         console.log('Going Manali');
+//         resolve()
+//     },1000)
+//     })
+// }
+
+// async function trip()
+// {
+//     await earnMoney()
+//     await buyCar()
+//     await goToManali()
+// }
+
+// try{
+// trip()
+// }catch (e)
+// {
+//     console.log(e)
+// }
+
+// callback
+
+// function earnMoney(buyCar,goToManali,stayingInHotel)
+// {
+//     setTimeout(()=>{
+//         console.log('have money')
+//         buyCar(goToManali,stayingInHotel)
+//     },1000)
+// }
+
+// function buyCar(goToManali,stayingInHotel)
+// {
+//     setTimeout(()=>{
+//         console.log('have car')
+//         goToManali(stayingInHotel)
+//     },2000)
+// }
+
+// function goToManali(stayingInHotel)
+// {
+//     setTimeout(()=>{
+//         console.log('going manali')
+//         stayingInHotel()
+        
+//     },1000)
+// }
+
+// function stayingInHotel()
+// {
+//     setTimeout(()=>{
+//         console.log('staying In Hotel')
+        
+//     },1000)
+// }
+// earnMoney(buyCar,goToManali,stayingInHotel)
+
+
+// promises
+
+// function earnMoney()
+// {
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             resolve('have money')
+//         },1000)
+//     })
+// }
+
+// function buyCar()
+// {
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+
+//             let error=false;
+//             if(error)
+//             {
+//                 reject('unable to buy car')
+//             }
+//             else
+//             {
+//             resolve('have car')
+//             }
+//         },1000)
+//     })
+// }
+
+// function goToManali()
+// {
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             resolve('going manali')
+//         },1000)
+//     })
+// }
+
+// earnMoney().then((msg)=>{
+//     console.log(msg)
+//     buyCar().then((msg2)=>{
+//         console.log(msg2)
+//         goToManali().then((msg3)=>{
+//             console.log(msg3)
+//         }).catch((error)=>{
+//             console.log(error)
+//         })
+//     })
+// }).catch((error)=>{
+//     console.log(error)
+// })
+
+
+// console.log(a)
+// var a=10;
+
+// console.log(b)
+// let b =100;
+
+// function fun() 
+// {
+// 	var a =10;
+// }
+// fun()
+// console.log(a)
+// function fun2() 
+// {
+// var a =10;
+// console.log(a)
+
+// }
+// fun2()
+
+
+///
+
+// function fun3() 
+// {
+// 	var a =10;
+// 	{
+// 		let b=100
+// 	}
+// 	console.log(b)
+
+// }
+// fun3()
+
+// function fun4() 
+// {
+// 	var a =10;
+// 	{
+// 		var b=100
+// 	}
+// 	console.log(b)
+
+// }
+
+// fun4()
+//////////////////
+
+// function sample (){
+// for (var i=0; i<=5;i++){
+
+//     setTimeout(()=>{
+//         console.log(i)
+//     },1000)
+   
+// }
+// }
+// sample()
+
+
+console.log('a');
+
+console.log('b');
+
+async function fun()
+{
+const  c = await new Promise((resolve,reject)=>{
+            setTimeout(() => {
+                console.log('c')
+                resolve();
+            }, 3000);
+            })
+
+const d = await new  Promise((resolve,reject)=>{
+            setTimeout(() => {
+                console.log('d')
+                resolve();
+            }, 0);
+            })
+
+
+}
+fun().then(()=>{console.log('e')});
+
+
+
+// console.log('a');
+// console.log('b');
+// const c= async ()=>{
+//     const wait = await new Promise((res,rej)=>{
+//         setTimeout(() => {
+//                 console.log('c')
+//                 res();
+//             }, 3000);
+//             })
+
+// }
+// c().then(()=>{console.log('d')})
+
+
+// let promise1 = new Promise((resolve,reject)=>
+// {
+// resolve( msg: 'Successful' ))
+// })
+// promise1.then((data)=>{console.log(data)})
+// .catch(err=>{console.log(err.msg) })
+
+
+///
+// Let promise1=New Promise((resolve,reject)=>{
+// reject ({ msg: 'Something went wrong' ))
+// })
+// promise1.then((data)=>{console.log(data)})
+// .catch(err=>{console.log(‘Error occurred’ + err) })
+
+
+// let arr=[4,3,2,5,1]
+// for(let i=0; i<arr.length; i++)
+// {
+//     let max=i
+//     for(let j=i+1; j<arr.length; j++)
+//     {
+//         if(arr[max] > arr[j])
+//         {
+//            max=j;
+//         }
+//     }
+//     if(max !==i)
+//     {
+//         [arr[i],arr[max]]=[arr[max],arr[i]]
+//     }
+// }
+// console.log(arr);
+    </script>
+</body>
+</html>

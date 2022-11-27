@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<body>
+</body>
+<script>
+const posts =[
+    {title:'Post One',body:'This is Post one',createAt:new Date().getTime()},
+    {title:'Post Two',body:'This is Post two',createAt:new Date().getTime()},
+    {title:'Post Three',body:'This is Post three',createAt:new Date().getTime()},
+  
+];
+let intervalId=0;
+function getPost()
+{
+    clearInterval(intervalId);
+   intervalId= setInterval(()=>
+    {
+        let output='';
+        posts.forEach((post)=>
+        {
+            output +=`<li>${post.title} Created ${(new Date().getTime() - post.createAt)/1000} Seconds ago</li>`;
+        })
+        document.body.innerHTML=output;
+    },1000)
+    
+};
+function createPost(post4,callBack)
+{
+    setTimeout(()=>
+    {
+        posts.push({...post4,createAt:new Date().getTime()});
+        callBack();
+    },2000)
+    
+}
+createPost({title:'Post Four',body:'This is Post four'},getPost);
+
+
+</script>
+    </html>
+    
+    

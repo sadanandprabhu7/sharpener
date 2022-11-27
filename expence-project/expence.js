@@ -18,7 +18,14 @@ const objValues=JSON.stringify(obj)
 console.log('mypage');
 localStorage.setItem(obj.amount,objValues)
 
-//showDeatils(localStorage);
+const details=Object.keys(localStorage);
+for(let i=0; i<details.length; i++)
+{
+    let key = details[i];
+    let usersDeatils=localStorage[key];
+    let user=JSON.parse(usersDeatils);
+    showDeatils(user);
+}
 
 }
 window.addEventListener('DOMContentLoaded',()=>{
@@ -43,15 +50,17 @@ function showDeatils(user)
 
     const parentNode=document.getElementById('list');
     const li =`<li>${user.amount} ${user.description} ${user.categoryName}  
-    <button onclick=edit('${user.amount}','${user.description}','${user.categoryName}')>Edit</button>
+    <button onclick=edit('${user.description}','${user.categoryName}','${user.amount}')>Edit</button>
     <button onclick=deleteUser('${user.amount}')>Delete</button></li>`;
     parentNode.innerHTML=parentNode.innerHTML+li;
 }
-function edit(amountU,descriptionU,categoryU)
+function edit(descriptionU,categoryU,amountU)
 {
     document.getElementById('amount').value=amountU;
     document.getElementById('description').value=descriptionU;
     document.getElementById('category').value=categoryU;
+
+    deleteUser(amountU)
 
 }
 
@@ -65,9 +74,9 @@ function clearscreen(deleteU)
 {
     const newparenetNode =document.getElementById('list');
     const removes = document.getElementById(deleteU);
-    if(removes)
+    if(deleteU)
     {
-    newparenetNode.remove(removes)
+    newparenetNode.removeChild(removes)
     }
 
 }
